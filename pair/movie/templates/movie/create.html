@@ -5,6 +5,6 @@
     <h1>작성 완료</h1>
     <p>제목 : {{ title }}</p>
     <p>내용 : {{ content }}</p>
-    <a href="">목록으로</a>
+    <a href="{% url 'movie:index' %}">목록으로</a>
 
     {% endblock %}

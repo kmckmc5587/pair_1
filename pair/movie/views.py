@@ -19,14 +19,8 @@ def create(request):
     content = request.GET.get('content')
     
     Movie.objects.create(title=title, content=content)
-    context = {
-        'title' : title,
-        'content' : content,
-    }
-    return render(request, 'posts/create.html', context)
 
-    # return render(request, 'posts/create.html', context)
-    #return redirect('movie:index')
+    return redirect('movie:index')
 
 def delete(request, pk):
     Movie.objects.get(id=pk).delete()
