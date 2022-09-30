@@ -1,22 +1,35 @@
 {% extends 'base.html' %}
 
   {% block content %}
-  
-  <h1>게시판</h1>
-  <a href="{% url 'movie:new' %}">새글쓰기</a>
-  <ul>
-    {% for post in posts %}
-    <li>ID : {{ post.id }} | 
-      <a href="{% url 'movie:detail' movies.pk %}">제목 : {{ movies.title }} |</a> 내용 : {{ movies.content }}
-        <a href="{% url 'movie:edit' movies.pk %}">
-            [리뷰 수정]
-        </a>
-        <a href="{% url 'movie:delete' movies.pk %}">
-          [리뷰 삭제]
-      </a>
+  <h1 class="m-5 text-center">게시판</h1>
+  <a href="{% url 'movie:new' %}">리뷰 작성</a>
+  <ul style=" list-style:none;">
+    <table class="table">
+      <thead>
+        <tr class="bg-dark text-white-50">
+          <th scope="col">리뷰 번호</th>
+          <th scope="col">리뷰 제목</th>
+          <th scope="col">작성 시간</th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+    {% for movies in movie %}
+    <li>
+      <td><a href="{% url 'movie:detail' movies.pk %}">{{ movies.id }}</a> </td>
+    
+      <td>{{ movies.title }}</td>
+      <td>{{ movies.created_at|date:'Y-m-d' }}</td>
+
     </li>
+  </tr>
+</thead>
     {% endfor %}
   </ul>
+
+  </tbody>
+</table>
+
 
 
   {% endblock %}

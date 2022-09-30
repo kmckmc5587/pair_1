@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 
   {% block content %}
-  <h1>detail.html</h1>
-  <h2>제목 : {{ movies.title}}</h2>
-  <p>{{ movies.content }}</p>
+  <h1 class="text-center mt-5">{{movies.title}}</h1>
 
+    <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+    <input class="form-control"  style="height:140px" type="text" name="content"  value="{{movies.content}}"><br>
+    <div class="d-flex justify-content-between">
+    <div>
+  <a href="{% url 'movie:index' %}">목록으로</a> 
+</div>
+<div>
+  <a href="{% url 'movie:edit' movies.pk %}">
+    [리뷰 수정]
+</a>
+<a href="{% url 'movie:delete' movies.pk %}">
+  [리뷰 삭제]
+</a>
+</div>
+</div>
 
   {% endblock %}
